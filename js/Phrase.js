@@ -10,7 +10,6 @@
      constructor(phrase) {
          this.phrase = phrase.toLowerCase();
      }
- }
 
   /**
   * Displays a phrase
@@ -28,7 +27,7 @@
             }
          document.querySelector('ul').appendChild(li);   
      });
-}
+    }
 
   /**
   * Checks if the letter selected is in the phrase
@@ -54,11 +53,12 @@
  * @showMatchedLetter Correct letter
  */
 
- showMatchedLetter (letter) {
-     const matchedLetters = document.querySelectorAll('.letter');
-     for (let h = 0; h < matchedLetters.length; h++) {
-         if (matchedLetters[h].innerHTML === letter) {
-             matchedLetters[h].classList.replace('hide', 'show');
-         }
-     }
+    showMatchedLetter (letter) {
+        const matchedLetters = document.querySelectorAll('.letter');
+        for (let h = 0; h < matchedLetters.length; h++) {
+            if (matchedLetters[h].innerHTML === letter) {
+                matchedLetters[h].classList.replace('hide', 'show');
+            }
+        }
+        };
  };
