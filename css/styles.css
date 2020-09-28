@@ -14,13 +14,15 @@
   --font-size-large: 60px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
+  --font-family: 'CFHalloween-Regular';
 }
 
 /* main */
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'CFHalloween-Regular';
+  src: url('CFHalloween-Regular.ttf') format('ttf');
 }
 
 body {
@@ -50,9 +52,9 @@ button {
   margin: 6px;
   border: 1px solid transparent;
   padding: .5rem 1rem;
-  color: var(--color-keys);
+  color: white;
   font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
+  background-color: black;
   border-radius: 5px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
@@ -62,7 +64,7 @@ button {
 
 #btn__reset {
 	width: 200px;
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .main-container {
@@ -180,11 +182,11 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #f5785f;
 }
 
 .start a {
-  color: #fff;
+  color: white;
 }
 
 .win {
