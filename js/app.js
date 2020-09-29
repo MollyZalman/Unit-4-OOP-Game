@@ -11,17 +11,29 @@
  const game = new Game();
  const startGame = document.getElementById('btn__reset').addEventListener('click', () => {
      game.startGame();
- });
+
 
 /**
- * Allows keyboard to start game and handle Interactions
+ * When a player clicks a letter on the keyboard, this will keep track of which key was pressed
  * @key keys on the keyboard, also known as letters
  */
+document.querySelector("#qwerty").addEventListener('click', (e) => {
+	let qwertyTarget = e.target;
+	if (qwertyTarget.tagName === 'BUTTON') {
+		letter = qwertyTarget;
+		letter.disabled = true;
+		game.handleInteraction(letter)
+	}
+})
 
-const keys = document.getElementById('querty');
-keys.addEventListener('click', (e) => {
-    if (e.target.tagName === 'BUTTON') {
-        game.handleInteraction(e.target);
-    }
+document.addEventListener('keyup', (e) => {
+	document.querySelectorAll(".key").forEach((key) => {
+		const letter = key;
+		if (key.textContent === e.key && key.disabled === false) {
+			game.handleInteraction(letter)
+			letter.disabled = true;
+		} else if (key.textContent === e.key && key.disabled === true) {
+		    }
+	    })
+    })
 });
-

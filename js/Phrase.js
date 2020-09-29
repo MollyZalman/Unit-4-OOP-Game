@@ -17,7 +17,7 @@
   */
  addPhraseToDisplay() {
      const letters = this.phrase.toString().split('');
-     letters.array.forEach(letters => {
+     letters.forEach(letters => {
          let li = document.createElement("LI");
          li.innerHTML = `${letters}`;
             if (letters === ' ') {
@@ -27,7 +27,7 @@
             }
          document.querySelector('ul').appendChild(li);   
      });
-    }
+    };
 
   /**
   * Checks if the letter selected is in the phrase
@@ -60,5 +60,5 @@
                 matchedLetters[h].classList.replace('hide', 'show');
             }
         }
-        };
- };
+    };
+};
