@@ -7,7 +7,6 @@
  * @game New game
  * @startGame Starts new game
  */
-
  const game = new Game();
  const startGame = document.getElementById('btn__reset').addEventListener('click', () => {
      game.startGame();

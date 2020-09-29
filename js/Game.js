@@ -5,7 +5,7 @@
  /**
   * Initializes missed, phrases, and activePhrase
   */
- class Game {
+class Game {
      constructor () {
          this.missed = 0;
          this.phrases = this.createPhrases();
@@ -14,10 +14,10 @@
      }
 
 
-/**
- * Creates phrases to display in the game
- * @return A list of different phrases
- */
+    /**
+     * Creates phrases to display in the game
+     * @return A list of different phrases
+     */
     createPhrases () {
         const phrases = [
             {phrase: 'Trick or treat'},
@@ -33,11 +33,10 @@
         return phrases;
     };
 
-/**
-* Picks a phrase from the array above
-* @randomPhrase Generates a random phrase
-*/
-
+    /**
+    * Picks a phrase from the array above
+    * @randomPhrase Generates a random phrase
+    */
    getRandomPhrase() {
     const randomPhrase = Math.floor(Math.random() * this.phrases.length);
     return this.phrases[randomPhrase];
