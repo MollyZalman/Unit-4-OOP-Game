@@ -15,6 +15,7 @@
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
   --font-family: 'CFHalloween-Regular';
+  --src: url('CFHalloween-Regular.ttf') format('ttf');
   --color: #85E21F;
 }
 
@@ -22,6 +23,11 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'CFHalloween-Regular';
+  src: url('CFHalloween-Regular.ttf') format('ttf');
+}
+
+@font-face {
   font-family: 'CFHalloween-Regular';
   src: url('CFHalloween-Regular.ttf') format('ttf');
 }
