@@ -14,8 +14,12 @@
   --font-size-large: 60px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
-  --font-family: 'CFHalloween-Regular';
-  --src: url('CFHalloween-Regular.ttf') format('ttf');
+  --font-family: "CFHalloween-Regular";
+  /* --src: url("css/fonts/CFHalloween-Regular.eot");
+  --src: url("css/fonts/CFHalloween-Regular.ttf") format("ttf"),
+         url("css/fonts/CFHalloween-Regularsvg#filename") format("svg"),
+         url("css/fonts/CFHalloween-Regular.woff") format("woff"),
+         url("css/fonts/CFHalloween-Regular.woff2") format("woff2"); */
   --color: #85E21F;
 }
 
@@ -23,14 +27,23 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'CFHalloween-Regular';
-  src: url('CFHalloween-Regular.ttf') format('ttf');
+  /* font-family: "CFHalloween-Regular";
+  src: url("css/fonts/CFHalloween-Regular.eot");
+  src: url("css/fonts/CFHalloween-Regular.ttf") format("ttf"),
+       url("css/fonts/CFHalloween-Regularsvg#filename") format("svg"),
+       url("css/fonts/CFHalloween-Regular.woff") format("woff"),
+       url("css/fonts/CFHalloween-Regular.woff2") format("woff2"); */
 }
 
-@font-face {
-  font-family: 'CFHalloween-Regular';
-  src: url('CFHalloween-Regular.ttf') format('ttf');
-}
+/* @font-face {
+  font-family: "CFHalloween-Regular";
+  src: url("css/fonts/CFHalloween-Regular.eot");
+  src: url("css/fonts/CFHalloween-Regular.ttf") format("ttf"),
+       url("css/fonts/CFHalloween-Regularsvg#filename") format("svg"),
+       url("css/fonts/CFHalloween-Regular.woff") format("woff"),
+       url("css/fonts/CFHalloween-Regular.woff2") format("woff2");
+  
+} */
 
 body {
   justify-content: space-evenly;
@@ -54,6 +67,7 @@ h2 {
 
 h1 {
   font-size: 30px;
+  font-family: "CFHalloween-Regular";
 }
 
 button {
@@ -204,7 +218,7 @@ button {
 }
 
 .lose {
-  background-color: #F75F1C;
+  background-color: yellow;
 }
 
 .lose a {

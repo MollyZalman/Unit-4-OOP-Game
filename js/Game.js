@@ -72,19 +72,25 @@
 
    /**
    * Removes a life if a player proposes a letter that's incorrect and keeps track of how many lives a player has left
-   * @heart Accesses the hearts
+   * Ends the game once all lives are lost
+   * @life Accesses the hearts
    */
-   removeLife() {
-       this.missed += 1;
-
-       const heartLog = this.missed - 1;
-       const lives = document.getElementsByClassName('tries');
-       //Cannot read property 'firstElementChild' of undefined
-       const displayHeart = lives[heartLog].firstElementChild;
-       displayHeart.src = "images/lostHeart.png";
-       letter.classList.add("wrong");
-       letter.disabled = true;
-       };
+removeLife() {
+    const life = document.querySelectorAll('img[src="images/liveHeart.png"]');
+        this.missed ++;
+        if (this.missed === 1) {
+            life[0].setAttribute('src', 'images/lostHeart.png');
+        } else if (this.missed === 2) {
+            life[0].setAttribute('src', 'images/lostHeart.png');
+        } else if (this.missed === 3) {
+            life[0].setAttribute('src', 'images/lostHeart.png');
+        } else if (this.missed === 4) {
+            life[0].setAttribute('src', 'images/lostHeart.png');
+        } else if (this.missed == 5) {
+            life[0].setAttribute('src', 'images/lostHeart.png');
+            this.gameOver(false);
+        } 
+};
 
    /**
    * Displays a message if you win or lose, Halloween style of course
@@ -128,6 +134,21 @@
        }
    };
 
+   gameBoardReset() {
+    document.querySelector("#phrase ul").innerHTML = "";
 
+    // Iterates over the keyboard buttons and applies the following properties.
+    keyboardKeys.forEach((button) => {
+        button.disabled = false;
+        button.classList.add("key");
+        button.classList.remove("wrong");
+        button.classList.remove("chosen");
+        });
+    // Handles resetting the heart containers on screen, for a new game.
+    const heartContainers = document.querySelectorAll(".tries img");
+    heartContainers.forEach((heartHealth) => {
+        heartHealth.src = "images/liveHeart.png";
+        });
+    };   
 
 };
