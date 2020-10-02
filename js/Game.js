@@ -34,6 +34,23 @@
    };
 
    /**
+   * Starts the game by choosing a phrase and displaying it on the web page
+   * @startGameDisplay Displays the game
+   * @chosenPhrase Gets a random phrase
+   * @phrase The phrase that was chosen
+   */
+  startGame() {
+    const startGameDisplay = document.getElementById('overlay');
+    const chosenPhrase = this.getRandomPhrase();
+    const phrase = new Phrase(chosenPhrase.phrase);
+    startGameDisplay.style.display ='none';
+
+    phrase.addPhraseToDisplay();
+    this.activePhrase = phrase;
+};
+
+
+   /**
    * Picks a phrase from the array above
    * @randomPhrase Generates a random phrase
    */
@@ -44,21 +61,34 @@
 
    /**
    * Starts the game by choosing a phrase and displaying it on the web page
-   * @startGameDisplay Displays the game
-   * @chosenPhrase Gets a random phrase
-   * @phrase The phrase that was chosen
+   * @button 
    */
-   startGame() {
-       const startGameDisplay = document.getElementById('overlay');
-       const chosenPhrase = this.getRandomPhrase();
-       const phrase = new Phrase(chosenPhrase.phrase);
-       startGameDisplay.style.display ='none';
+  handleInteraction(button){
+    button.disabled = true;
+    this.activePhrase.checkLetter(button.textContent);
 
-       phrase.addPhraseToDisplay();
-       this.activePhrase = phrase;
-   };
+    if (this.activePhrase.checkLetter(button.textContent) == false){
+        button.className = 'wrong';
+             //Cannot read property 'firstElementChild' of undefined
+            this.removeLife();
+    }else{
+        button.className = 'chosen';
+        const selectedPhrase = game.activePhrase.phrase.toString().split('');
 
-   /**
+        selectedPhrase.forEach(char => {
+            if (button.textContent == char){
+                this.activePhrase.showMatchedLetter(char);
+            }
+        })
+    }
+    game.checkForWin(); 
+    
+    if (game.checkForWin()){
+        this.gameOver(true);
+    }
+};
+
+  /**
    * Checks if all correct letters are displayed 
    * @correctLetters Letters that make up the chosen phrase
    */
@@ -75,7 +105,7 @@
    * Ends the game once all lives are lost
    * @life Accesses the hearts
    */
-removeLife() {
+    removeLife() {
     const life = document.querySelectorAll('img[src="images/liveHeart.png"]');
         this.missed ++;
         if (this.missed === 1) {
@@ -105,50 +135,24 @@ removeLife() {
        winner ? message.textContent = "You have survived 🎃! Happy Halloween 👻" : message.textContent = "You failed to stay alive 👹";
        };
 
-   /**
-   * Starts the game by choosing a phrase and displaying it on the web page
-   * @button 
-   */
-   handleInteraction(button){
-       button.disabled = true;
-       this.activePhrase.checkLetter(button.textContent);
+    resetGame(){
+    const lives = document.getElementsByTagName('img');
+        for(let h = 0; h < lives.length; h += 1){
+            lives[i].src = 'images/liveHeart.png';
+        }
 
-       if (this.activePhrase.checkLetter(button.textContent) == false){
-           button.className = 'wrong';
-                //Cannot read property 'firstElementChild' of undefined
-               this.removeLife();
-       }else{
-           button.className = 'chosen';
-           const selectedPhrase = game.activePhrase.phrase.toString().split('');
+    const phrase = document.getElementById('phrase');
+    const ul = phrase.firstElementChild;
+    ul.querySelectorAll('*').forEach(n => n.remove());
 
-           selectedPhrase.forEach(char => {
-               if (button.textContent == char){
-                   this.activePhrase.showMatchedLetter(char);
-               }
-           })
-       }
-       game.checkForWin(); 
-       
-       if (game.checkForWin()){
-           this.gameOver(true);
-       }
-   };
+    const buttons = document.getElementsByTagName('button');
+    const buttonArray = Array.from(buttons);
 
-   gameBoardReset() {
-    document.querySelector("#phrase ul").innerHTML = "";
-
-    // Iterates over the keyboard buttons and applies the following properties.
-    keyboardKeys.forEach((button) => {
-        button.disabled = false;
-        button.classList.add("key");
-        button.classList.remove("wrong");
-        button.classList.remove("chosen");
-        });
-    // Handles resetting the heart containers on screen, for a new game.
-    const heartContainers = document.querySelectorAll(".tries img");
-    heartContainers.forEach((heartHealth) => {
-        heartHealth.src = "images/liveHeart.png";
-        });
-    };   
-
+        for(let h = 0; j<buttonArray.length; h += 1){
+            if(buttonArray[h].id != 'btn_reset'){
+                buttonArray[h].className = 'key';
+                buttonArray[h].disabled = false;
+            }
+        }
+    } 
 };

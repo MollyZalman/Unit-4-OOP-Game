@@ -7,10 +7,12 @@
  * @game New game
  * @startGame Starts new game
  */
-const game = new Game();
-const startGame = document.getElementById('btn__reset').addEventListener('click', () => {
-	game.startGame();
-
+class Game {
+    constructor(){
+        this.missed = 0;
+        this.phrases = this.createPhrases();
+        this.activePhrase = null; 
+    }
 
 /**
 * When a player clicks a letter on the keyboard, this will keep track of which key was pressed

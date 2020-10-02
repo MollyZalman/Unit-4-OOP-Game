@@ -16,18 +16,23 @@
  * @letters Represents keys on the keyboard
  */
 addPhraseToDisplay() {
-    const letters = this.phrase.toString().split('');
-    letters.forEach(letters => {
-        let li = document.createElement("LI");
-        li.innerHTML = `${letters}`;
-           if (letters === ' ') {
-               li.setAttribute('class', 'space');    
-           } else {
-               li.setAttribute('class', `hide letter ${letters}`);
-           }
-        document.querySelector('ul').appendChild(li);   
-    });
-   };
+    const ul = document.querySelector('#phrase ul');
+    let splitPhrase = this.phrase.split('');
+    ul.innerHTML = '';
+
+
+    for (let i=0; i<this.phrase.length; i++) {
+        let li = document.createElement('LI');
+        li.innerHTML = splitPhrase[i];
+        ul.appendChild(li);
+
+        if (this.phrase[i] == ' ') {
+            li.classList = 'space';
+        } else if (this.phrase[i] == splitPhrase[i]) {
+            li.classList = 'hide letter';
+        }
+       }
+   }
 
  /**
  * Checks if the letter selected is in the phrase
@@ -48,11 +53,10 @@ addPhraseToDisplay() {
      }
  };
 
-/**
-* If a match is found, the correct letter displays in the phrase
-* @showMatchedLetter Correct letter
-*/
-
+    /**
+    * If a match is found, the correct letter displays in the phrase
+    * @showMatchedLetter Correct letter
+    */
    showMatchedLetter (letter) {
        const matchedLetters = document.querySelectorAll('.letter');
        for (let h = 0; h < matchedLetters.length; h++) {
