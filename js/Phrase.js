@@ -4,8 +4,8 @@
 
  class Phrase {
     constructor() {
-        this.phrase = phrase.toLowerCase();
-        this.chars = this.phrase.split('');
+        this.phrase = phrase;
+        this.chars = this.phrase;
     }
 
     /**
