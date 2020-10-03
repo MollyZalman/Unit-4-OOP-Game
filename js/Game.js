@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Game.js */
 
- const Game = {
+ class Game {
      constructor() {
          this.missed = 0;
          this.phrases = this.createPhrases();
@@ -21,7 +21,7 @@
             new Phrase("This is Halloween"),
             new Phrase("Hocus Pocus"),
             new Phrase("I put a spell on you"),
-            new Phrase("Pick your poisen"),
+            new Phrase("Pick your poison"),
             new Phrase("Witch, please"),
         ];
         return phrases;
@@ -36,6 +36,19 @@
         return this.phrases[randomPhrase];
     }
  
+    /**
+    * Begins game by selecting a random phrase and displaying it to user
+    */
+    startGame() {
+        let overLay = (document.querySelector("#overlay").style.display = "none");
+		overLay;
+
+		const getPhrase = game.getRandomPhrase();
+		const showPhrase = new Phrase(getPhrase.phrase);
+
+		showPhrase.addPhraseToDisplay();
+		this.activePhrase = showPhrase;
+    };
  
  
  

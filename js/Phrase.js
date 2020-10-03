@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
-const Phrase = {
+ class Phrase {
     constructor() {
         this.phrase = phrase.toLowerCase();
         this.chars = this.phrase.split('');
