@@ -7,8 +7,30 @@
 * Reveals under overlay
 */
 let game;
-const button = document.getElementById('btn__reset');
-button.addEventListener('click', () => {
+const reset = document.getElementById('btn__reset');
+reset.addEventListener('click', () => {
     game = new Game(game);
     game.startGame();
 });
+
+/**
+* Event listener to make the keys work
+* Under overlay
+*/
+// const keys = document.getElementsByClassName('key');
+// for (let i = 0; i < keys.length; i ++) {
+// keys[i].addEventListener("click", (event) => {
+// game.handleInteraction(event.target);
+// console.log(event.target);
+// });
+// }; 
+
+
+
+
+
+
+
+
+
+

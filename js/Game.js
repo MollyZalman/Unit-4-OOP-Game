@@ -49,8 +49,67 @@
 		showPhrase.addPhraseToDisplay();
 		this.activePhrase = showPhrase;
     };
+
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(button) { //method that handles each keyboard selection based on whether it is correct or not.
+
+        };
  
- 
+    /**
+    * Checks for winning move
+    * @return {boolean} True if game has been won, false if game wasn't won
+    */
+    checkForWin() {
+        const letters = document.querySelectorAll('.letter').length;
+        const shown = document.querySelectorAll('.show').length;
+            if (letters == shown) {
+                return true;
+            } else {
+                return false;
+            }
+    };
+
+    /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
+    removeLife() {
+		this.missed += 1;
+		const lives = document.querySelector(
+			'img[src="images/liveHeart.png"]'
+		);
+		lives.src = "images/lostHeart.png";
+		if (this.missed === 5) {
+			this.gameOver(false);
+		}
+	}
+    };
+
+    /**
+    * Displays game over message, reveals under overlay, and disables the keyboard
+    * @param {boolean} gameWon - Whether or not the user won the game
+    */
+    gameOver (gameWon) {
+        const gameOverMessage = document.querySelector('#game-over-message');
+        gameOverMessage.innerHTML = '';
+        overlay.style.display = 'flex';
+        overlay.classList.remove('win', 'lose');
+        if (gameWon) {
+            overlay.classList.add('win')
+            gameOverMessage.innerHTML += `You have survived 🤡... for now 👹`
+        } else {
+            overlay.classList.add('lose')
+            gameOverMessage.innerHTML +=
+                `You failed to survive 👻, <br>
+                The phrase was: "${this.activePhrase.phrase}"`
+        };
+        reset.innerHTML = 'Restart Game';
+        this.isAvailable = false;
+    };
  
  
  
