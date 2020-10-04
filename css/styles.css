@@ -1,59 +1,41 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300");
 
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #881EE4;
+  --color-win: #78cf82;
+  --color-lose: #881ee4;
   --color-start: #5b85b7;
-  --color-neutral:#85E21F;
-  --color-neutral-light: #85E21F;
-  --color-keys: #85E21F;
-  --color-keys-light: #85E21F;
+  --color-neutral: #85e21f;
+  --color-neutral-light: #85e21f;
+  --color-keys: #85e21f;
+  --color-keys-light: #85e21f;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
-  --font-family: "CFHalloween-Regular";
-  /* --src: url("css/fonts/CFHalloween-Regular.eot");
-  --src: url("css/fonts/CFHalloween-Regular.ttf") format("ttf"),
-         url("css/fonts/CFHalloween-Regularsvg#filename") format("svg"),
-         url("css/fonts/CFHalloween-Regular.woff") format("woff"),
-         url("css/fonts/CFHalloween-Regular.woff2") format("woff2"); */
-  --color: #85E21F;
+  --transition: all 0.2s ease-in-out;
+  --font-family: "Montserrat", sans-serif;
+  --color: #85e21f;
 }
 
 /* main */
 
 * {
   box-sizing: border-box;
-  /* font-family: "CFHalloween-Regular";
-  src: url("css/fonts/CFHalloween-Regular.eot");
-  src: url("css/fonts/CFHalloween-Regular.ttf") format("ttf"),
-       url("css/fonts/CFHalloween-Regularsvg#filename") format("svg"),
-       url("css/fonts/CFHalloween-Regular.woff") format("woff"),
-       url("css/fonts/CFHalloween-Regular.woff2") format("woff2"); */
+  font-family: "Montserrat", sans-serif;
 }
-
-/* @font-face {
-  font-family: "CFHalloween-Regular";
-  src: url("css/fonts/CFHalloween-Regular.eot");
-  src: url("css/fonts/CFHalloween-Regular.ttf") format("ttf"),
-       url("css/fonts/CFHalloween-Regularsvg#filename") format("svg"),
-       url("css/fonts/CFHalloween-Regular.woff") format("woff"),
-       url("css/fonts/CFHalloween-Regular.woff2") format("woff2");
-  
-} */
 
 body {
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
   height: 100vh;
-  background-color: #F75F1C;
+  background-color: #f75f1c;
 }
 
-li, ol, ul {
+li,
+ol,
+ul {
   padding: 0;
   display: inline-block;
 }
@@ -67,14 +49,14 @@ h2 {
 
 h1 {
   font-size: 30px;
-  font-family: "CFHalloween-Regular";
+  font-family: "Montserrat", sans-serif;
 }
 
 button {
   margin: 6px;
   border: 1px solid transparent;
-  padding: .5rem 1rem;
-  color: #85E21F;
+  padding: 0.5rem 1rem;
+  color: #85e21f;
   font-size: var(--font-size-medium);
   background-color: black;
   border-radius: 5px;
@@ -85,7 +67,7 @@ button {
 }
 
 #btn__reset {
-	width: 200px;
+  width: 200px;
   margin: 0 auto;
 }
 
@@ -103,16 +85,15 @@ button {
   padding: 10px;
 }
 
-#phrase ul li{
+#phrase ul li {
   margin-top: 15px;
 }
 
 /* Title */
 
 .header {
-  color: #FFF;
+  color: #fff;
 }
-
 
 /* Phrase */
 
@@ -122,9 +103,14 @@ button {
   width: 65px;
   padding: 20px 1px 0 1px;
   margin-right: 2px;
-  color: #881EE4;
+  color: #881ee4;
   background: white;
   border-radius: 5px;
+}
+
+/* Added complimentary to Phrase.js */
+.hide {
+ color: transparent;
 }
 
 .space {
@@ -133,31 +119,30 @@ button {
 
 .show {
   color: #fff;
-  background-color: #85E21F;
+  background-color: #85e21f;
   font-size: 20px;
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
 }
-
 
 /* Keyboard */
 
 .keyrow {
   display: flex;
   justify-content: center;
-  color: #85E21F;
+  color: #85e21f;
 }
 
 .chosen {
-  background: #881EE4;
+  background: #881ee4;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #85E21F;
+  color: #85e21f;
 }
 
 .wrong {
@@ -168,12 +153,12 @@ button {
 .btn__reset {
   padding: 16px;
   margin: 50px auto;
-  background: #F75F1C;
+  background: #f75f1c;
   border-radius: 5px;
   font-size: 20px;
   cursor: pointer;
-  border-bottom: solid 4px rgba(0, 0, 0, .3);
-  border-right: solid 3px rgba(0, 0, 0, .3)
+  border-bottom: solid 4px rgba(0, 0, 0, 0.3);
+  border-right: solid 3px rgba(0, 0, 0, 0.3);
 }
 
 .btn__reset:active {
@@ -188,7 +173,7 @@ button {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #F75F1C;
+  color: #f75f1c;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -198,11 +183,11 @@ button {
 }
 
 .title {
-  color: #FFF;
+  color: #fff;
 }
 
 .start {
-  background-color: #F75F1C;
+  background-color: #f75f1c;
 }
 
 .start a {
@@ -210,17 +195,17 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+  background-color: purple;
 }
 
 .win a {
-  color: var(--color-win);
+  color: purple;
 }
 
 .lose {
-  background-color: yellow;
+  background-color: red;
 }
 
 .lose a {
-  color: var(--color-lose);
+  color: red;
 }

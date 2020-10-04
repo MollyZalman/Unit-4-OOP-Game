@@ -7,6 +7,7 @@
          this.missed = 0;
          this.phrases = this.createPhrases();
          this.activePhrase = null;
+         this.keyboardAvailable = false;
      }
  
     /**
@@ -15,14 +16,14 @@
     */
     createPhrases() {
         const phrases = [
-            new Phrase("Eat, drink, and be scary"),
+            new Phrase("Eat drink and be scary"),
             new Phrase("Trick or treat"),
             new Phrase("Ghouls just want to have fun"),
             new Phrase("This is Halloween"),
             new Phrase("Hocus Pocus"),
             new Phrase("I put a spell on you"),
             new Phrase("Pick your poison"),
-            new Phrase("Witch, please"),
+            new Phrase("Witch please"),
         ];
         return phrases;
     };
@@ -42,20 +43,34 @@
     startGame() {
         let overLay = (document.querySelector("#overlay").style.display = "none");
 		overLay;
-
 		const getPhrase = game.getRandomPhrase();
 		const showPhrase = new Phrase(getPhrase.phrase);
-
 		showPhrase.addPhraseToDisplay();
 		this.activePhrase = showPhrase;
     };
 
     /**
-    * Handles onscreen keyboard button clicks
+    * Handles onscreen keyboard button clicks (correct/incorrect keys)
+    * Checks if the player has won or not while accessing css styles
     * @param (HTMLButtonElement) button - The clicked button element
     */
-    handleInteraction(button) { //method that handles each keyboard selection based on whether it is correct or not.
+    handleInteraction(button) { 
+        if (this.activePhrase.checkLetter(button.innerHTML))  { 
+            button.disabled = true;  
+            button.classList = "chosen";
+            this.activePhrase.showMatchedLetter(button.innerHTML);
 
+            const hasWon = this.checkForWin();
+            if (hasWon) { 
+                this.gameOver(true)
+                        }
+        //If the letter doesn't match...
+        } else if (!this.activePhrase.checkLetter(button.innerHTML)) {
+            button.disabled = true;
+            button.classList = "wrong"; 
+            //Remove a life
+            this.removeLife(this.missed); 
+        }
         };
  
     /**
@@ -65,11 +80,7 @@
     checkForWin() {
         const letters = document.querySelectorAll('.letter').length;
         const shown = document.querySelectorAll('.show').length;
-            if (letters == shown) {
-                return true;
-            } else {
-                return false;
-            }
+            return letters === shown ? true: false;
     };
 
     /**
@@ -85,8 +96,7 @@
 		lives.src = "images/lostHeart.png";
 		if (this.missed === 5) {
 			this.gameOver(false);
-		}
-	}
+	    }
     };
 
     /**
@@ -100,24 +110,46 @@
         overlay.classList.remove('win', 'lose');
         if (gameWon) {
             overlay.classList.add('win')
-            gameOverMessage.innerHTML += `You have survived 🤡... for now 👹`
+            gameOverMessage.style.color = 'white';
+            gameOverMessage.innerHTML += `You have survived... for now`
         } else {
             overlay.classList.add('lose')
+            gameOverMessage.style.color = 'white';
             gameOverMessage.innerHTML +=
-                `You failed to survive 👻, <br>
+                `You failed to survive. <br>
                 The phrase was: "${this.activePhrase.phrase}"`
         };
+        const reset = document.getElementById('btn__reset');
         reset.innerHTML = 'Restart Game';
-        this.isAvailable = false;
+        reset.addEventListener("click", () => this.gameReset());
+        this.keyboardAvailable = false;
     };
- 
- 
- 
- 
- 
 
+    /**
+    * Resets the game board, clearing the game from before 
+    * Targets elements of the page like the keyboard, hearts, and phrase container
+    */
+    gameReset() { 
+        let phraseUl = document.querySelector('ul'); 
+        let qwertyKeys = document.querySelectorAll('#qwerty button');
+        const lives = document.getElementsByTagName("img"); 
 
+        phraseUl.innerHTML = "";
+        this.missed = 0;
 
+        if (qwertyKeys.length ){
+            for (let key of qwertyKeys) {
+                key.className = "key";
+                key.disabled = false;
+            }
+        }
 
+        if (lives.length){
+            for (let life of lives) {
+                life.src = "images/liveHeart.png";
+            }
+        }
+
+    };
 
 };

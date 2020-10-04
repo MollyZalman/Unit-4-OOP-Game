@@ -17,14 +17,12 @@ reset.addEventListener('click', () => {
 * Event listener to make the keys work
 * Under overlay
 */
-// const keys = document.getElementsByClassName('key');
-// for (let i = 0; i < keys.length; i ++) {
-// keys[i].addEventListener("click", (event) => {
-// game.handleInteraction(event.target);
-// console.log(event.target);
-// });
-// }; 
-
+const keys = document.getElementsByClassName('key');
+    for (let h = 0; h < keys.length; h ++) {
+    keys[h].addEventListener("click", (e) => {
+    game.handleInteraction(e.target);
+    });
+}; 
 
 
 
