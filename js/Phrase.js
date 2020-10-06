@@ -36,6 +36,7 @@ class Phrase {
   /**
    * Displays passed letter on screen after a match is found
    * @param (string) letter - Letter to display
+   * h for halloween
    */
   showMatchedLetter(input) {
     const getCorrectLetter = document.getElementsByClassName(input);

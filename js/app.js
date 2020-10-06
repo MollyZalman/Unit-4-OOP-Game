@@ -18,6 +18,7 @@ reset.addEventListener('click', () => {
 /**
 * Event listener to make the keys work when they are clicked with a mouse
 * Under overlay
+* h for halloween
 */
 const keys = document.getElementsByClassName('key');
     for (let h = 0; h < keys.length; h ++) {

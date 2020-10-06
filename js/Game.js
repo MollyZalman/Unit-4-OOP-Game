@@ -33,7 +33,7 @@
     * @return {Object} Phrase object chosen to be used
     */
     getRandomPhrase() {
-        let randomPhrase = Math.floor(Math.random() * this.phrases.length);
+        const randomPhrase = Math.floor(Math.random() * this.phrases.length);
         return this.phrases[randomPhrase];
     }
  
@@ -136,8 +136,8 @@
     * Accesses the phrase container, the keys, and the hearts
     */
     gameReset() { 
-        let phraseUl = document.querySelector('ul'); 
-        let qwertyKeys = document.querySelectorAll('#qwerty button');
+        const phraseUl = document.querySelector('ul'); 
+        const qwertyKeys = document.querySelectorAll('#qwerty button');
         const lives = document.getElementsByTagName("img"); 
 
         phraseUl.innerHTML = "";

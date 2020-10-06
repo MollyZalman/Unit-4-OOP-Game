@@ -10,13 +10,13 @@ This project showcases my capability to use vanilla Javascript without any plug-
 My forth project for the Team Treehouse Tech Degree in Full Stack JavaScript.
 
 ### Build status
-Placing finishing touches
+Exceeds Expectations.
 
 ### Start Date:
 (09/16/20)
 
 ### End Date (non permanent):
-
+(10/06/20)
 
 ### Code style
 js-standard-style
