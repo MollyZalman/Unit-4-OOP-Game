@@ -1,7 +1,11 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
-
+ 
+/**
+* Creates phrases for use in game
+* @Game class and constructor methods missed, phrases, activePhrase, and keyboardAvailable
+*/
  class Game {
      constructor() {
          this.missed = 0;
