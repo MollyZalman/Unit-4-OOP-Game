@@ -5,6 +5,7 @@
 class Phrase {
   constructor(phrase) {
     this.phrase = phrase.toLowerCase();
+    //Inspired by: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
     this.chars = this.phrase.split("");
   }
 

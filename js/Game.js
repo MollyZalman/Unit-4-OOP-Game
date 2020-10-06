@@ -39,14 +39,21 @@
  
     /**
     * Begins game by selecting a random phrase and displaying it to user
+    * Clears game and restarts
     */
     startGame() {
-        let overLay = (document.querySelector("#overlay").style.display = "none");
-		overLay;
-		const getPhrase = game.getRandomPhrase();
-		const showPhrase = new Phrase(getPhrase.phrase);
-		showPhrase.addPhraseToDisplay();
-		this.activePhrase = showPhrase;
+		document.querySelectorAll('.key').forEach(key => {
+			key.disabled = false;
+			key.classList = 'key';
+        });
+        document.querySelectorAll('.letter').forEach(letter => letter.remove());
+		document.querySelectorAll('.space').forEach(space => space.remove());
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+		document.querySelectorAll('.tries img')
+		    .forEach(heart => heart.setAttribute("src", "images/liveHeart.png"));
+		document.querySelector("#overlay").style.display = "none";
+		document.querySelector("#overlay").classList = '';
     };
 
     /**
@@ -59,16 +66,15 @@
             button.disabled = true;  
             button.classList = "chosen";
             this.activePhrase.showMatchedLetter(button.innerHTML);
-
             const hasWon = this.checkForWin();
             if (hasWon) { 
                 this.gameOver(true)
-                        }
+            }
         //If the letter doesn't match...
         } else if (!this.activePhrase.checkLetter(button.innerHTML)) {
             button.disabled = true;
             button.classList = "wrong"; 
-            //Remove a life
+            //Removes a life :/
             this.removeLife(this.missed); 
         }
         };
@@ -127,7 +133,7 @@
 
     /**
     * Resets the game board, clearing the game from before 
-    * Targets elements of the page like the keyboard, hearts, and phrase container
+    * Accesses the phrase container, the keys, and the hearts
     */
     gameReset() { 
         let phraseUl = document.querySelector('ul'); 
@@ -137,19 +143,17 @@
         phraseUl.innerHTML = "";
         this.missed = 0;
 
-        if (qwertyKeys.length ){
+        if (qwertyKeys.length ) {
             for (let key of qwertyKeys) {
                 key.className = "key";
                 key.disabled = false;
             }
         }
 
-        if (lives.length){
+        if (lives.length) {
             for (let life of lives) {
                 life.src = "images/liveHeart.png";
             }
         }
-
     };
-
 };
