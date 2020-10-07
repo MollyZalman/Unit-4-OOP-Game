@@ -11,7 +11,6 @@
          this.missed = 0;
          this.phrases = this.createPhrases();
          this.activePhrase = null;
-         this.keyboardAvailable = false;
      }
  
     /**
@@ -55,9 +54,12 @@
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
 		document.querySelectorAll('.tries img')
-		    .forEach(heart => heart.setAttribute("src", "images/liveHeart.png"));
+		    .forEach(heart => heart.setAttribute("src", "images/grim-reaper.png"));
 		document.querySelector("#overlay").style.display = "none";
-		document.querySelector("#overlay").classList = '';
+        document.querySelector("#overlay").classList = '';
+        this.gameReset();
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay;
     };
 
     /**
@@ -79,7 +81,7 @@
             button.disabled = true;
             button.classList = "wrong"; 
             //Removes a life :/
-            this.removeLife(this.missed); 
+            this.removeLife(); 
         }
         };
  
@@ -101,9 +103,9 @@
     removeLife() {
 		this.missed += 1;
 		const lives = document.querySelector(
-			'img[src="images/liveHeart.png"]'
+			'img[src="images/grim-reaper.png"]'
 		);
-		lives.src = "images/lostHeart.png";
+		lives.src = "images/grim-reaper-dead.png";
 		if (this.missed === 5) {
 			this.gameOver(false);
 	    }
@@ -132,7 +134,6 @@
         const reset = document.getElementById('btn__reset');
         reset.innerHTML = 'Restart Game';
         reset.addEventListener("click", () => this.gameReset());
-        this.keyboardAvailable = false;
     };
 
     /**
@@ -156,7 +157,7 @@
 
         if (lives.length) {
             for (let life of lives) {
-                life.src = "images/liveHeart.png";
+                life.src = "images/grim-reaper.png";
             }
         }
     };
